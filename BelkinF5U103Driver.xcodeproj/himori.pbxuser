@@ -1,0 +1,211 @@
+// !$*UTF8*$!
+{
+	089C1669FE841209C02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Release;
+		activeTarget = 32D94FC30562CBF700B6AF17 /* BelkinF5U103Driver */;
+		codeSenseManager = 302C8D10111515CA00B6B752 /* Code sense */;
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					341,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 286604391;
+			PBXWorkspaceStateSaveDate = 286604391;
+		};
+		perUserProjectItems = {
+			302C8D3311151D1500B6B752 /* PBXTextBookmark */ = 302C8D3311151D1500B6B752 /* PBXTextBookmark */;
+			302C8D3411151D1500B6B752 /* PBXTextBookmark */ = 302C8D3411151D1500B6B752 /* PBXTextBookmark */;
+			302C8D70111535AC00B6B752 /* PBXTextBookmark */ = 302C8D70111535AC00B6B752 /* PBXTextBookmark */;
+			302C8D71111535AC00B6B752 /* PBXTextBookmark */ = 302C8D71111535AC00B6B752 /* PBXTextBookmark */;
+			302C8D72111535AC00B6B752 /* PlistBookmark */ = 302C8D72111535AC00B6B752 /* PlistBookmark */;
+			302C8D73111535AC00B6B752 /* PBXTextBookmark */ = 302C8D73111535AC00B6B752 /* PBXTextBookmark */;
+			302C8D75111535AC00B6B752 /* PBXTextBookmark */ = 302C8D75111535AC00B6B752 /* PBXTextBookmark */;
+			302C8D77111535AC00B6B752 /* PlistBookmark */ = 302C8D77111535AC00B6B752 /* PlistBookmark */;
+			302C8D78111535AC00B6B752 /* PBXTextBookmark */ = 302C8D78111535AC00B6B752 /* PBXTextBookmark */;
+			30C9674211153C5300D42007 /* PBXTextBookmark */ = 30C9674211153C5300D42007 /* PBXTextBookmark */;
+			30FC4C8C11153C710063DF08 /* PBXTextBookmark */ = 30FC4C8C11153C710063DF08 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 302C8D0F111515CA00B6B752 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	089C167EFE841241C02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 253}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 45}";
+		};
+	};
+	1A224C3EFF42367911CA2CB7 /* BelkinF5U103Driver.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 6832}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1120}";
+			sepNavWindowFrame = "{{38, 71}, {1003, 681}}";
+		};
+	};
+	1A224C3FFF42367911CA2CB7 /* BelkinF5U103Driver.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {768, 45654}}";
+			sepNavSelRange = "{101970, 0}";
+			sepNavVisRange = "{37279, 709}";
+			sepNavWindowFrame = "{{38, 71}, {1003, 681}}";
+		};
+	};
+	302C8D0F111515CA00B6B752 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	302C8D10111515CA00B6B752 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	302C8D3311151D1500B6B752 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A224C3FFF42367911CA2CB7 /* BelkinF5U103Driver.cpp */;
+		name = "BelkinF5U103Driver.cpp: 3272";
+		rLen = 0;
+		rLoc = 101970;
+		rType = 0;
+		vrLen = 754;
+		vrLoc = 37642;
+	};
+	302C8D3411151D1500B6B752 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 089C167EFE841241C02AAC07 /* English */;
+		name = "InfoPlist.strings: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 45;
+		vrLoc = 0;
+	};
+	302C8D561115222C00B6B752 /* InfoPlist.strings */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.plist.strings;
+		name = InfoPlist.strings;
+		path = /Users/himori/tmp/kext/English.lproj/InfoPlist.strings;
+		sourceTree = "<absolute>";
+	};
+	302C8D70111535AC00B6B752 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 302C8D561115222C00B6B752 /* InfoPlist.strings */;
+		name = "InfoPlist.strings: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 284;
+		vrLoc = 0;
+	};
+	302C8D71111535AC00B6B752 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 089C167EFE841241C02AAC07 /* English */;
+		name = "InfoPlist.strings: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 45;
+		vrLoc = 0;
+	};
+	302C8D72111535AC00B6B752 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 32D94FCF0562CBF700B6AF17 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/himori/Develop/BelkinF5U103Driver/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	302C8D73111535AC00B6B752 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A224C3FFF42367911CA2CB7 /* BelkinF5U103Driver.cpp */;
+		name = "BelkinF5U103Driver.cpp: 3272";
+		rLen = 0;
+		rLoc = 101970;
+		rType = 0;
+		vrLen = 709;
+		vrLoc = 37279;
+	};
+	302C8D75111535AC00B6B752 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 302C8D561115222C00B6B752 /* InfoPlist.strings */;
+		name = "InfoPlist.strings: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 284;
+		vrLoc = 0;
+	};
+	302C8D77111535AC00B6B752 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 32D94FCF0562CBF700B6AF17 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/himori/Develop/BelkinF5U103Driver/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	302C8D78111535AC00B6B752 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A224C3EFF42367911CA2CB7 /* BelkinF5U103Driver.h */;
+		name = "BelkinF5U103Driver.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1120;
+		vrLoc = 0;
+	};
+	30C9674211153C5300D42007 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A224C3EFF42367911CA2CB7 /* BelkinF5U103Driver.h */;
+		name = "BelkinF5U103Driver.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1120;
+		vrLoc = 0;
+	};
+	30FC4C8C11153C710063DF08 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A224C3EFF42367911CA2CB7 /* BelkinF5U103Driver.h */;
+		name = "BelkinF5U103Driver.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1120;
+		vrLoc = 0;
+	};
+	32D94FC30562CBF700B6AF17 /* BelkinF5U103Driver */ = {
+		activeExec = 0;
+	};
+	32D94FCF0562CBF700B6AF17 /* Info.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, 92}, {1003, 681}}";
+		};
+	};
+}
