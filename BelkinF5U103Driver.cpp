@@ -2798,7 +2798,8 @@ void BelkinF5U103Driver::USBRequest( UInt8 request, UInt16 value)
 #if 0
         MER->wValue = HostToUSBWord(value);
 #else
-        MER->wValue = value;
+//        MER->wValue = value;
+		MER->wValue = OSSwapHostToBigInt16(value);
 #endif
         MER->wIndex = fpCommInterfaceNumber;
 	MER->wLength = 0;
