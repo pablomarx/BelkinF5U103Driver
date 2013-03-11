@@ -6,20 +6,24 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleName</key>
-	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>com.bears.driver.BelkinF5U103Driver</string>
+	<string>com.bears.driver.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.0d1</string>
+	<string>1</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2013 Hiroki Mori. All rights reserved.</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>ANYDATA_ADU_E100X</key>
@@ -206,9 +210,15 @@
 	<key>OSBundleLibraries</key>
 	<dict>
 		<key>com.apple.iokit.IOSerialFamily</key>
-		<string>1.0.4</string>
+		<string>10.0.6</string>
 		<key>com.apple.iokit.IOUSBFamily</key>
-		<string>1.8</string>
+		<string>5.4</string>
+		<key>com.apple.kpi.iokit</key>
+		<string>12.2</string>
+		<key>com.apple.kpi.mach</key>
+		<string>12.2</string>
+		<key>com.apple.kpi.libkern</key>
+		<string>12.2</string>
 	</dict>
 </dict>
 </plist>

@@ -40,7 +40,7 @@
  * STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #define DEBUG				0			// for debugging
 #define USE_ELG				0			// to event log - DEBUG must also be set
 #define kEvLogSize			(4096*16)		// 16 pages = 64K = 4096 events
@@ -49,21 +49,21 @@
 #define Sleep_Time			20
 
 #if DEBUG
-	#if USE_ELG
-		#define ELG(A,B,ASCI,STRING)    EvLog( (UInt32)(A), (UInt32)(B), (UInt32)(ASCI), STRING )		
-	#else /* not USE_ELG */
-		#define ELG(A,B,ASCI,STRING)	{IOLog( "BelkinF5U103Driver: %8x %8x " STRING "\n", (unsigned int)(A), (unsigned int)(B) );IOSleep(Sleep_Time);}
-	#endif /* USE_ELG */
-	#if LOG_DATA
-		#define LogData(D, C, b)	USBLogData((UInt8)D, (UInt32)C, (char *)b)
-	#else /* not LOG_DATA */
-		#define LogData(D, C, b)
-	#endif /* LOG_DATA */
+#if USE_ELG
+#define ELG(A,B,ASCI,STRING)    EvLog( (UInt32)(A), (UInt32)(B), (UInt32)(ASCI), STRING )
+#else /* not USE_ELG */
+#define ELG(A,B,ASCI,STRING)	{IOLog( "BelkinF5U103Driver: %8x %8x " STRING "\n", (unsigned int)(A), (unsigned int)(B) );IOSleep(Sleep_Time);}
+#endif /* USE_ELG */
+#if LOG_DATA
+#define LogData(D, C, b)	USBLogData((UInt8)D, (UInt32)C, (char *)b)
+#else /* not LOG_DATA */
+#define LogData(D, C, b)
+#endif /* LOG_DATA */
 #else /* not DEBUG */
-	#define ELG(A,B,ASCI,S)
-	#define LogData(D, C, b)
-	#undef USE_ELG
-	#undef LOG_DATA
+#define ELG(A,B,ASCI,S)
+#define LogData(D, C, b)
+#undef USE_ELG
+#undef LOG_DATA
 #endif /* DEBUG */
 
 #define IOLogIt(A,B,ASCI,STRING)	IOLog( "BelkinF5U103Driver: %8x %8x " STRING "\n", (unsigned int)(A), (unsigned int)(B) )
@@ -75,10 +75,10 @@
 #define propertyTag			"F5U103"
 
 /* USB CDC Defintions	*/
-#if 0		
+#if 0
 #define kUSBAbstractControlModel	2
-#define kUSBv25				1		
-	
+#define kUSBv25				1
+
 #define kUSBbRxCarrier			0x01			// Carrier Detect
 #define kUSBDCD				kUSBbRxCarrier
 #define kUSBbTxCarrier			0x02			// Data Set Ready
@@ -143,137 +143,137 @@
 #define	UBSA_MSR_DDSR			0x02	/* DSR has changed state */
 #define	UBSA_MSR_DCTS			0x01	/* CTS has changed state */
 
-	enum
-	{
-		kUSBSEND_ENCAPSULATED_COMMAND		= 0,			// Requests
-		kUSBGET_ENCAPSULATED_RESPONSE		= 1,
-		kUSBSET_COMM_FEATURE 			= 2,
-		kUSBGET_COMM_FEATURE 			= 3,
-		kUSBCLEAR_COMM_FEATURE 			= 4,
-		kUSBSET_LINE_CODING 			= 0x20,
-		kUSBGET_LINE_CODING 			= 0x21,
-		kUSBSET_CONTROL_LINE_STATE 		= 0x22,
-		kUSBSEND_BREAK 				= 0x23
-	};
-	
-	enum
-	{
-		kUSBNETWORK_CONNECTION 			= 0,			// Notifications
-		kUSBRESPONSE_AVAILABLE 			= 1,
-		kUSBSERIAL_STATE 			= 0x20
-	};
-	
-	typedef struct
-	{	
-		UInt32			dwDTERate;
-		UInt8			bCharFormat;
-		UInt8			bParityType;
-		UInt8			bDataBits;
-		
-	} LineCoding;
-	
+enum
+{
+  kUSBSEND_ENCAPSULATED_COMMAND		= 0,			// Requests
+  kUSBGET_ENCAPSULATED_RESPONSE		= 1,
+  kUSBSET_COMM_FEATURE 			= 2,
+  kUSBGET_COMM_FEATURE 			= 3,
+  kUSBCLEAR_COMM_FEATURE 			= 4,
+  kUSBSET_LINE_CODING 			= 0x20,
+  kUSBGET_LINE_CODING 			= 0x21,
+  kUSBSET_CONTROL_LINE_STATE 		= 0x22,
+  kUSBSEND_BREAK 				= 0x23
+};
+
+enum
+{
+  kUSBNETWORK_CONNECTION 			= 0,			// Notifications
+  kUSBRESPONSE_AVAILABLE 			= 1,
+  kUSBSERIAL_STATE 			= 0x20
+};
+
+typedef struct
+{
+  UInt32			dwDTERate;
+  UInt8			bCharFormat;
+  UInt8			bParityType;
+  UInt8			bDataBits;
+  
+} LineCoding;
+
 #define dwDTERateOffset			0
 
 #define wValueOffset			2
 #define wIndexOffset			4
 #define wLengthOffset			6
 
-	enum
-	{
-		CS_INTERFACE				= 0x24,
-		
-		Header_FunctionalDescriptor		= 0x00,
-		CM_FunctionalDescriptor			= 0x01,
-		ACM_FunctionalDescriptor		= 0x02,
-		Union_FunctionalDescriptor		= 0x06,
-		CS_FunctionalDescriptor			= 0x07,
-		
-		CM_ManagementData			= 0x01,
-		CM_ManagementOnData			= 0x02,
-		
-		ACM_DeviceSuppCommFeature		= 0x01,
-		ACM_DeviceSuppControl			= 0x02,
-		ACM_DeviceSuppBreak			= 0x04,
-		ACM_DeviceSuppNetConnect		= 0x08
-	};
-	
-	typedef struct 
-	{
-		UInt8			bFunctionLength;
-		UInt8		 	bDescriptorType;
-		UInt8		 	bDescriptorSubtype;
-	} FunctionalDescriptorHeader;
+enum
+{
+  CS_INTERFACE				= 0x24,
+  
+  Header_FunctionalDescriptor		= 0x00,
+  CM_FunctionalDescriptor			= 0x01,
+  ACM_FunctionalDescriptor		= 0x02,
+  Union_FunctionalDescriptor		= 0x06,
+  CS_FunctionalDescriptor			= 0x07,
+  
+  CM_ManagementData			= 0x01,
+  CM_ManagementOnData			= 0x02,
+  
+  ACM_DeviceSuppCommFeature		= 0x01,
+  ACM_DeviceSuppControl			= 0x02,
+  ACM_DeviceSuppBreak			= 0x04,
+  ACM_DeviceSuppNetConnect		= 0x08
+};
 
-	typedef struct 
-	{
-		UInt8			bFunctionLength;
-		UInt8 			bDescriptorType;
-		UInt8 			bDescriptorSubtype;
-		UInt8 			bmCapabilities;
-		UInt8 			bDataInterface;
-	} CMFunctionalDescriptor;
-	
-	typedef struct 
-	{
-		UInt8			bFunctionLength;
-		UInt8 			bDescriptorType;
-		UInt8 			bDescriptorSubtype;
-		UInt8 			bmCapabilities;
-	} ACMFunctionalDescriptor;
+typedef struct
+{
+  UInt8			bFunctionLength;
+  UInt8		 	bDescriptorType;
+  UInt8		 	bDescriptorSubtype;
+} FunctionalDescriptorHeader;
 
-		/* Globals	*/
+typedef struct
+{
+  UInt8			bFunctionLength;
+  UInt8 			bDescriptorType;
+  UInt8 			bDescriptorSubtype;
+  UInt8 			bmCapabilities;
+  UInt8 			bDataInterface;
+} CMFunctionalDescriptor;
 
-        typedef struct globals      /* Globals for this module (not per instance)   */
-        {
-                UInt32			evLogFlag; // debugging only
-                UInt8			*evLogBuf;
-                UInt8			*evLogBufe;
-                UInt8			*evLogBufp;
-                UInt8			intLevel;
-		class			BelkinF5U103Driver	*BelkinF5U103DriverInstance;
-        } globals;
+typedef struct
+{
+  UInt8			bFunctionLength;
+  UInt8 			bDescriptorType;
+  UInt8 			bDescriptorSubtype;
+  UInt8 			bmCapabilities;
+} ACMFunctionalDescriptor;
 
-		/* SccTypes.h	*/
+/* Globals	*/
 
-	enum InterruptAssignments
-	{
-		kIntChipSet				= 0,
-		kIntTxDMA,
-		kIntRxDMA
-	};
-		
-	enum ParityType
-	{
-		NoParity 				= 0,
-		OddParity,
-		EvenParity
-	};
-	
+typedef struct globals      /* Globals for this module (not per instance)   */
+{
+  UInt32			evLogFlag; // debugging only
+  UInt8			*evLogBuf;
+  UInt8			*evLogBufe;
+  UInt8			*evLogBufp;
+  UInt8			intLevel;
+  class			BelkinF5U103Driver	*BelkinF5U103DriverInstance;
+} globals;
+
+/* SccTypes.h	*/
+
+enum InterruptAssignments
+{
+  kIntChipSet				= 0,
+  kIntTxDMA,
+  kIntRxDMA
+};
+
+enum ParityType
+{
+  NoParity 				= 0,
+  OddParity,
+  EvenParity
+};
+
 #define kDefaultBaudRate		9600
 #define kMaxBaudRate			230400		// experimenting with higher speeds hul
 #define kMaxCirBufferSize		4096
 
-		/* SccQueuePrimatives.h	*/
+/* SccQueuePrimatives.h	*/
 
-	typedef struct CirQueue
-	{
-		UInt8			*Start;
-		UInt8			*End;
-		UInt8			*NextChar;
-		UInt8			*LastChar;
-		size_t			Size;
-		size_t			InQueue;
-	} CirQueue;
+typedef struct CirQueue
+{
+  UInt8			*Start;
+  UInt8			*End;
+  UInt8			*NextChar;
+  UInt8			*LastChar;
+  size_t			Size;
+  size_t			InQueue;
+} CirQueue;
 
-	typedef enum QueueStatus
-	{
-		queueNoError				= 0,
-		queueFull,
-		queueEmpty,
-		queueMaxStatus
-	} QueueStatus;
+typedef enum QueueStatus
+{
+  queueNoError				= 0,
+  queueFull,
+  queueEmpty,
+  queueMaxStatus
+} QueueStatus;
 
-	/* PPCSerialPort.h	*/
+/* PPCSerialPort.h	*/
 
 #define BIGGEST_EVENT			3
 //#define BUFFER_SIZE_DEFAULT		1200
@@ -300,153 +300,153 @@
 #define MAX_BLOCK_SIZE			PAGE_SIZE
 #define COMM_BUFF_SIZE			16
 
-	typedef struct
-	{
-		UInt32	ints;
-		UInt32	txInts;
-		UInt32	rxInts;
-		UInt32	mdmInts;
-		UInt32	txChars;
-		UInt32	rxChars;
-	} Stats_t;
+typedef struct
+{
+  UInt32	ints;
+  UInt32	txInts;
+  UInt32	rxInts;
+  UInt32	mdmInts;
+  UInt32	txChars;
+  UInt32	rxChars;
+} Stats_t;
 
-	typedef struct BufferMarks
-	{
-		unsigned long		BufferSize;
-		unsigned long		HighWater;
-		unsigned long		LowWater;
-		bool			OverRun;
-	} BufferMarks;
+typedef struct BufferMarks
+{
+  unsigned long		BufferSize;
+  unsigned long		HighWater;
+  unsigned long		LowWater;
+  bool			OverRun;
+} BufferMarks;
 
-	typedef struct
-	{
-		UInt32			State;
-		UInt32			WatchStateMask;
-		IOLock			*serialRequestLock;
+typedef struct
+{
+  UInt32			State;
+  UInt32			WatchStateMask;
+  IOLock			*serialRequestLock;
+  
+  // queue control structures:
+  
+  CirQueue		RX;
+  CirQueue		TX;
+  
+  BufferMarks		RXStats;
+  BufferMarks		TXStats;
+	
+  // UART configuration info:
+  
+  UInt32			CharLength;
+  UInt32			StopBits;
+  UInt32			TX_Parity;
+  UInt32			RX_Parity;
+  UInt32			BaudRate;
+  UInt8			FCRimage;
+  UInt8			IERmask;
+  bool			MinLatency;
+	
+  // flow control state & configuration:
+  
+  UInt8			XONchar;
+  UInt8			XOFFchar;
+  UInt32			SWspecial[ 0x100 >> SPECIAL_SHIFT ];
+  UInt32			FlowControl;	// notify-on-delta & auto_control
+  
+  int			RXOstate;    /* Indicates our receive state.	*/
+  int			TXOstate;	 /* Indicates our transmit state, if we have received any Flow Control.	*/
+	
+  IOThread		FrameTOEntry;
+	
+  mach_timespec		DataLatInterval;
+  mach_timespec		CharLatInterval;
+	
+  bool			AreTransmitting;
+	
+  /* extensions to handle the Driver */
+  
+  bool 			isDriver;
+  void			*DriverPowerRegister;
+  UInt32 			DriverPowerMask;
+  
+  UInt32			LastCharLength;
+  UInt32			LastStopBits;
+  UInt32			LastTX_Parity;
+  UInt32			LastBaudRate;
+  
+} PortInfo_t;
 
-			// queue control structures:
-			
-		CirQueue		RX;
-		CirQueue		TX;
+/* Inline time conversions */
 
-		BufferMarks		RXStats;
-		BufferMarks		TXStats;
-	
-			// UART configuration info:
-			
-		UInt32			CharLength;
-		UInt32			StopBits;
-		UInt32			TX_Parity;
-		UInt32			RX_Parity;
-		UInt32			BaudRate;
-		UInt8			FCRimage;
-		UInt8			IERmask;
-		bool			MinLatency;
-	
-			// flow control state & configuration:
-			
-		UInt8			XONchar;
-		UInt8			XOFFchar;
-		UInt32			SWspecial[ 0x100 >> SPECIAL_SHIFT ];
-		UInt32			FlowControl;	// notify-on-delta & auto_control
-		
-		int			RXOstate;    /* Indicates our receive state.	*/
-		int			TXOstate;	 /* Indicates our transmit state, if we have received any Flow Control.	*/
-	
-		IOThread		FrameTOEntry;
-	
-		mach_timespec		DataLatInterval;
-		mach_timespec		CharLatInterval;
-	
-		bool			AreTransmitting;
-	
-			/* extensions to handle the Driver */
-			
-		bool 			isDriver;
-		void			*DriverPowerRegister;
-		UInt32 			DriverPowerMask;
-		
-		UInt32			LastCharLength;
-		UInt32			LastStopBits;
-		UInt32			LastTX_Parity;
-		UInt32			LastBaudRate;
-		
-	} PortInfo_t;
-	
-	/* Inline time conversions */
-	
 static inline unsigned long tval2long( mach_timespec val )
 {
-   return (val.tv_sec * NSEC_PER_SEC) + val.tv_nsec;
-   
+  return (val.tv_sec * NSEC_PER_SEC) + val.tv_nsec;
+  
 }
 
 static inline mach_timespec long2tval( unsigned long val )
 {
 	mach_timespec	tval;
-
+  
 	tval.tv_sec  = val / NSEC_PER_SEC;
 	tval.tv_nsec = val % NSEC_PER_SEC;
 	return tval;
 	
 }
 
-	/* BelkinF5U103Driver.h - This file contains the class definition for the	*/
-	/* USB Communication Device Class (CDC) sample driver.				*/
+/* BelkinF5U103Driver.h - This file contains the class definition for the	*/
+/* USB Communication Device Class (CDC) sample driver.				*/
 
 class BelkinF5U103Driver : public IOSerialDriverSync
 {
-    OSDeclareDefaultStructors( BelkinF5U103Driver );	/* Constructor & Destructor stuff	*/
-
+  OSDeclareDefaultStructors( BelkinF5U103Driver );	/* Constructor & Destructor stuff	*/
+  
 private:
-//	UInt32				fIOcount;		// number of pipe IO operations outstanding
+  //	UInt32				fIOcount;		// number of pipe IO operations outstanding
 	UInt32				fCount;
 	UInt16				fModemState;	// last serial state recieived from the modem
 	UInt8				fSessions;		// Active sessions
-        bool				fTerminate;		// Are we being terminated (ie the device was unplugged)
+  bool				fTerminate;		// Are we being terminated (ie the device was unplugged)
 	UInt8				fCMCapabilities;	// Call Management Capabilities
 	UInt8				fACMCapabilities;	// Abstract Control Management Capabilities
 	UInt8				fProductName[productNameLength];	// Actually the product String from the Device
 	PortInfo_t 			*fPorts[numberofPorts];		// Port array
-
+  
 	IOBufferMemoryDescriptor	*fpCommPipeMDP;
 	IOBufferMemoryDescriptor	*fpPipeInMDP;
 	IOBufferMemoryDescriptor	*fpPipeOutMDP;
-
+  
 	UInt8				*fCommPipeBuffer;
 	UInt8				*fPipeInBuffer;
 	UInt8				*fPipeOutBuffer;
-
+  
 	IOUSBCompletion			fCommCompletionInfo;
 	IOUSBCompletion			fReadCompletionInfo;
 	IOUSBCompletion			fWriteCompletionInfo;
 	IOUSBCompletion			fMERCompletionInfo;
-
+  
 	static void			commReadComplete(  void *obj, void *param, IOReturn ior, UInt32 remaining );
 	static void			dataReadComplete(  void *obj, void *param, IOReturn ior, UInt32 remaining );
 	static void			dataWriteComplete( void *obj, void *param, IOReturn ior, UInt32 remaining );
 	static void			merWriteComplete( void *obj, void *param, IOReturn ior, UInt32 remaining );
-
+  
 public:
-
+  
 	IOUSBDevice			*fpDevice;
-
+  
 	IOUSBInterface			*fpCommInterface;
 	UInt8				fpCommInterfaceNumber;
-
+  
 	IOUSBPipe			*fpInPipe;
 	IOUSBPipe			*fpOutPipe;
 	IOUSBPipe			*fpCommPipe;
-
-		/* IOKit methods:	*/
-		
+  
+  /* IOKit methods:	*/
+  
 	virtual void			free( void );
 	virtual bool			start( IOService *provider );
 	virtual void			stop( IOService *provider );
-        virtual IOReturn 		message( UInt32 type, IOService *provider,  void *argument = 0 );
-
-		/**** IOSerialDriverSync Abstract Method Implementation	****/
-
+  virtual IOReturn 		message( UInt32 type, IOService *provider,  void *argument = 0 );
+  
+  /**** IOSerialDriverSync Abstract Method Implementation	****/
+  
 	virtual IOReturn		acquirePort( bool sleep, void *refCon );
 	virtual IOReturn		releasePort( void *refCon );
 	virtual IOReturn		setState( UInt32 state, UInt32 mask, void *refCon );
@@ -459,8 +459,8 @@ public:
 	virtual IOReturn		dequeueEvent( UInt32 *event, UInt32 *data, bool sleep, void *refCon );
 	virtual IOReturn		enqueueData( UInt8 *buffer, UInt32 size, UInt32 * count, bool sleep, void *refCon );
 	virtual IOReturn		dequeueData( UInt8 *buffer, UInt32 size, UInt32 *count, UInt32 min, void *refCon );
-												
-	    /**** IOSerialDriverSync Abstract Method Implementation	****/
+  
+  /**** IOSerialDriverSync Abstract Method Implementation	****/
 	
 	bool 				allocateResources( PortInfo_t *port );
 	void				releaseResources( PortInfo_t *port );
@@ -475,9 +475,9 @@ public:
 	void 				SetStructureDefaults( PortInfo_t *port, bool Init );
 	void 				freeRingBuffer( CirQueue *Queue );
 	bool 				allocateRingBuffer( CirQueue *Queue, size_t BufferSize );
-
+  
 private:
-
+  
 	// QueuePrimatives
 	static QueueStatus		AddBytetoQueue( CirQueue *Queue, char Value );
 	static QueueStatus		GetBytetoQueue( CirQueue *Queue, UInt8 *Value );
@@ -490,11 +490,11 @@ private:
 	static size_t			GetQueueSize( CirQueue *Queue );
 	static QueueStatus		GetQueueStatus( CirQueue *Queue );
 	static void			CheckQueues( PortInfo_t *port );
-
+  
 	static IOReturn			privateWatchState( PortInfo_t *port, UInt32 *state, UInt32 mask );
 	static UInt32			readPortState( PortInfo_t *port );
 	static void			changeState( PortInfo_t *port, UInt32 state, UInt32 mask );
-
-        void				USBRequest( UInt8 request, UInt16 value);
+  
+  void				USBRequest( UInt8 request, UInt16 value);
 }; /* end class BelkinF5U103Driver */
 
