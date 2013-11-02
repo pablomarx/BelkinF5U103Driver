@@ -251,7 +251,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BelkinF5U103Driver/BelkinF5U103Driver-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "BelkinF5U103Driver/BelkinF5U103Driver-Info.plist";
 				MODULE_NAME = com.bears.driver.BelkinF5U103Driver;
 				MODULE_VERSION = 1.0.0d1;
@@ -267,7 +267,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BelkinF5U103Driver/BelkinF5U103Driver-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "BelkinF5U103Driver/BelkinF5U103Driver-Info.plist";
 				MODULE_NAME = com.bears.driver.BelkinF5U103Driver;
 				MODULE_VERSION = 1.0.0d1;
@@ -295,6 +295,7 @@
 				F16EDEB516ED6C5D00B222CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
